@@ -1,0 +1,10 @@
+meta
+checkpoint
+checkpoints
+*.zip
+*.swp
+*.pth
+*.pt
+*.log
+*.pkl
+*.pyc
