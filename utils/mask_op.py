@@ -235,6 +235,7 @@ class MaskManager_skip:
             start_idx, 
             end_idx, 
             flops_c, 
+            use_cplex=False,
             timelimit=None,
             path=None,
             debug=False,
@@ -247,6 +248,7 @@ class MaskManager_skip:
                 t_list=self.t_list,
                 quadratic_val_list=flops_const_list,
                 max_constraint=flops_constraint,
+                use_cplex=use_cplex,
                 timelimit=timelimit,
                 path=path,
                 )
@@ -258,6 +260,7 @@ class MaskManager_skip:
             end_idx, 
             flops_c, 
             gamma,
+            use_cplex=False,
             timelimit=None,
             path=None,
             debug=False,
@@ -271,6 +274,7 @@ class MaskManager_skip:
                 quadratic_val_list=flops_const_list,
                 max_constraint=flops_constraint,
                 gamma=gamma,
+                use_cplex=use_cplex,
                 timelimit=timelimit,
                 path=path,
                 )
@@ -281,6 +285,7 @@ class MaskManager_skip:
             start_idx,
             end_idx,
             mem_c,
+            use_cplex=False,
             timelimit=None,
             path=None,
             debug=False,
@@ -298,6 +303,7 @@ class MaskManager_skip:
                 t_list=self.t_list,
                 quadratic_val_list=mem_const_list,
                 max_constraint=mem_constraint,
+                use_cplex=use_cplex,
                 timelimit=timelimit,
                 path=path,
                 )
@@ -309,6 +315,7 @@ class MaskManager_skip:
             end_idx,
             mem_c,
             gamma,
+            use_cplex=False,
             timelimit=None,
             path=None,
             debug=False,
@@ -326,6 +333,7 @@ class MaskManager_skip:
                 quadratic_val_list=mem_const_list,
                 max_constraint=mem_constraint,
                 gamma=gamma,
+                use_cplex=use_cplex,
                 timelimit=timelimit,
                 path=path,
                 )

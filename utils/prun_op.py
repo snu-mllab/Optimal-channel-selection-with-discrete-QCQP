@@ -85,8 +85,8 @@ def prun_skip_4D(
         quadratic_val_list, 
         max_constraint,
         gamma,
-        timelimit=None,
         use_cplex=False,
+        timelimit=None,
         path=None
         ):
     '''

@@ -78,6 +78,15 @@ def train(model, criterion, optimizer, loader):
         optimizer.step()
     return (losses.avg, top1.avg)
 
+def str2bool(v):
+    if isinstance(v, bool):
+        return v 
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True 
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False 
+    else: 
+        raise argparse.ArgumentTypeError('Boolean value expected.')
 
 def main():
     parser = cifar_parser()
@@ -91,6 +100,7 @@ def main():
     parser.add_argument("--schedule",default=[60,120,160],help="decrease lr at these epochs.",nargs="+",type=int)
     parser.add_argument("--lr_decay",default=0.2,help="lr is multiplied by lr_decay on schedule.",nargs="+",type=float)
     parser.add_argument("--target_c",default=0.6,help="remaining ratio of target resource",type=float)
+    parser.add_argument("--use_cplex", help='use_cplex', default=False, type=str2bool)
     parser.add_argument("--gamma",default=1.0,help="ratio of amplification in 4D",type=float)
     parser.add_argument("--arch",default="resnet20",help="the name of network",type=str)
     parser.add_argument("--rseed",default=0,help="random seed",type=int)
@@ -136,6 +146,7 @@ def main():
                 start_idx=sidx,
                 end_idx=eidx,
                 flops_c=state['target_c'],
+                use_cplex=state['use_cplex'],
                 timelimit=state['timelimit'],
                 path=METADIR,
                 debug=False)
@@ -145,6 +156,7 @@ def main():
                 end_idx=eidx,
                 flops_c=state['target_c'],
                 gamma=state['gamma'],
+                use_cplex=state['use_cplex'],
                 timelimit=state['timelimit'],
                 path=METADIR,
                 debug=False)
@@ -153,6 +165,7 @@ def main():
                 start_idx=sidx,
                 end_idx=eidx,
                 mem_c=state['target_c'],
+                use_cplex=state['use_cplex'],
                 timelimit=state['timelimit'],
                 path=METADIR,
                 debug=False)
@@ -162,6 +175,7 @@ def main():
                 end_idx=eidx,
                 mem_c=state['target_c'],
                 gamma=state['gamma'],
+                use_cplex=state['use_cplex'],
                 timelimit=state['timelimit'],
                 path=METADIR,
                 debug=False)

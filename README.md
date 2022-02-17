@@ -62,8 +62,10 @@ Run Pruning Training ResNet (depth 56,32,20) on Cifar10:
 
 ```bash
 python exp/cifar_exp/main.py --mode (mode) --timelimit (timelimit) --baseseed (baseseed) --target_c (target) --arch (arch)
-e.g.) python exp/cifar_exp/main.py --mode flops_2D --timelimit 5000 --baseseed 4 --target_c 0.46 --arch resnet20
-e.g.2.) python exp/cifar_exp/main.py --mode flops_4D --timelimit 500 --baseseed 4 --target_c 0.46 --ratio 0.5 --arch resnet20
+e.g.) python exp/cifar_exp/main.py --mode flops_2D --timelimit 5000 --baseseed 4 --target_c 0.46 --arch resnet20 --use_cplex True
+e.g.2) python exp/cifar_exp/main.py --mode flops_2D --timelimit 5000 --baseseed 4 --target_c 0.46 --arch resnet20 --use_cplex False
+e.g.3.) python exp/cifar_exp/main.py --mode flops_4D --timelimit 500 --baseseed 4 --target_c 0.46 --gamma 0.5 --arch resnet20 --use_cplex True
+e.g.4.) python exp/cifar_exp/main.py --mode flops_4D --timelimit 500 --baseseed 4 --target_c 0.46 --arch resnet20 --use_cplex False
 ```
 
 * (mode) - 'flops_2D', 'flops_4D', 'mem_2D', 'mem_4D'
@@ -72,7 +74,11 @@ e.g.2.) python exp/cifar_exp/main.py --mode flops_4D --timelimit 500 --baseseed 
 * (target_c) - ratio of target constraints and max constraints for conv layers. 0~1
 * (gamma) - gamma for 4D. target_c ~ 1
 * (arch) - 'resnet20', 'resnet32', 'resnet56'
+* (use_cplex) - True or False
 
+
+### Greedy solve for the discrete QCQP 
+We implemented another fast greedy approach to solve discrete QCQP. Please set '(use_cplex)' to be False.
 
 ## ResNet-50 layer Wall-clock time exp
 
